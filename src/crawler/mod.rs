@@ -1,6 +1,7 @@
-use std::{collections::HashMap, fs::File, io::{self, BufRead}};
+use std::{fs::File, io::{self, BufRead}};
 use reqwest::blocking::get;
-use scraper::{Html, Selector};
+use mysql::*;
+use mysql::prelude::*;
 
 pub fn crawl(){
     let file = File::open("src/crawler/urls.txt").unwrap(); 
@@ -20,21 +21,39 @@ pub fn crawl(){
 
 fn fetch_html(url: &String){
     let response = get(url).unwrap().text().unwrap();
-    parse_html(&response);
+    parse_html(&response, &url);
 }
 
-fn parse_html(html: &str) {
+fn parse_html(html: &str, url: &str) {
     let plain_text = html2text::from_read(html.as_bytes(), 80);
 
     let stopwords = get_stopwords();
 
-    for raw_word in plain_text.split_whitespace() {
+    for raw_word in plain_text.split_whitespace() { 
         let word = clean_word(raw_word);
 
         if !word.is_empty() && !stopwords.contains(word.as_str()) {
-            println!("{}", word);
+            insert_into_db(&word, &url);
         }
     }
+}
+
+fn insert_into_db(word: &str, url: &str){
+    let conn_url = "mysql://root:your_password@localhost:3306/search_engine";
+
+    // Create a connection pool
+    let pool = Pool::new(conn_url).unwrap();
+    let mut conn = pool.get_conn().unwrap();
+
+    println!("{} => {}", word, url);
+    // Insert query
+    conn.exec_drop(
+        "INSERT INTO inverted_index (word, url) VALUES (:word, :url)",
+        params! {
+            "word" => word,
+            "url" => url,
+        },
+    ).unwrap();
 }
 
 fn clean_word(word: &str) -> String {
