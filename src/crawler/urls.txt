@@ -1,0 +1,51 @@
+# Global News & Content
+https://www.bbc.com/
+https://edition.cnn.com/
+https://www.nytimes.com/
+https://www.theguardian.com/international
+https://www.aljazeera.com/
+
+# Technology & Development
+https://www.github.com/
+https://stackoverflow.com/
+https://www.techcrunch.com/
+https://www.theverge.com/
+https://arstechnica.com/
+https://thenextweb.com/
+https://www.wired.com/
+
+# Science & Research
+https://www.nature.com/
+https://www.sciencemag.org/
+https://www.sciencedaily.com/
+https://www.space.com/
+https://www.nasa.gov/
+https://www.livescience.com/
+https://phys.org/
+
+# Education & Reference
+https://www.wikipedia.org/
+https://www.khanacademy.org/
+https://ocw.mit.edu/
+https://www.britannica.com/
+
+# Open Data & Government
+https://data.gov/
+https://data.europa.eu/
+https://data.gov.in/
+
+# Social Media & Community
+https://www.reddit.com/
+https://news.ycombinator.com/
+https://medium.com/
+
+# Search Directories & Portals
+https://www.dmoztools.net/
+https://curlie.org/
+
+# Local / Nepali Sites
+https://kathmandupost.com/
+https://myrepublica.nagariknetwork.com/
+https://onlinekhabar.com/
+https://thehimalayantimes.com/
+
